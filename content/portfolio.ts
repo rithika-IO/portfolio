@@ -107,10 +107,10 @@ export const ABOUT: AboutContent = {
 
 export const NAV_LINKS: readonly NavLink[] = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
   { href: "#education", label: "Education" },
-  { href: "#achievements", label: "Achievements" },
+  { href: "#achievements", label: "Certificates" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
