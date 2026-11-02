@@ -81,7 +81,7 @@ export default function Navbar() {
     return `rounded-xs font-display text-base tracking-wider uppercase transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral ${
       isActive
         ? "text-coral underline decoration-coral underline-offset-4"
-        : "text-cream/70 hover:text-cream"
+        : "text-cream/70 hover:text-coral"
     }`;
   };
 
@@ -90,7 +90,7 @@ export default function Navbar() {
     const isActive = activeSection === section;
 
     return `w-fit rounded-xs font-display text-2xl tracking-wider uppercase transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral ${
-      isActive ? "text-coral" : "text-cream/80 hover:text-cream"
+      isActive ? "text-coral" : "text-cream/80 hover:text-coral"
     }`;
   };
 
@@ -112,7 +112,7 @@ export default function Navbar() {
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cream font-bold text-ink">
             <MonogramLogo className="h-[26px] w-[26px]" />
           </div>
-          <span className="flex flex-col font-sans text-xs leading-tight text-cream">
+          <span className="flex flex-col font-serif text-sm leading-tight font-semibold text-cream">
             <span>Rithika</span>
             <span>Mandiv</span>
           </span>

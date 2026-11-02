@@ -42,7 +42,7 @@ export default function Contact() {
                   {...(social.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="rounded-xs text-coral underline decoration-coral/60 underline-offset-4 transition hover:text-cream hover:decoration-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
+                  className="rounded-xs text-cream underline decoration-coral/60 underline-offset-4 transition hover:text-coral hover:decoration-coral focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
                 >
                   {social.contactLabel ?? social.label}
                 </a>

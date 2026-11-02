@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Dancing_Script, Bebas_Neue } from "next/font/google";
+import { Inter, Dancing_Script, Bebas_Neue, Fraunces } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "@/components/ui/SplashScreen";
 
@@ -19,6 +19,11 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://rithikamandiv.me"),
   title: "Rithika Mandiv | Software Engineer",
@@ -32,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dancingScript.variable} ${bebasNeue.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${dancingScript.variable} ${bebasNeue.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
         <SplashScreen />
         {children}

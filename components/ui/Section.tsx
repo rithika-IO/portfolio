@@ -26,7 +26,7 @@ export default function Section({ id, label, color, children }: SectionProps) {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12">
         <div className="md:col-span-3">
           <h2
-            className={`inline-block -rotate-2 rounded-lg px-3 py-1 font-display text-2xl tracking-wide text-ink uppercase shadow-sm md:text-3xl ${STICKER_BG[color]}`}
+            className={`inline-block -rotate-2 rounded-lg px-4 py-1.5 font-display text-3xl tracking-wide text-ink uppercase shadow-sm md:px-5 md:py-2 md:text-5xl ${STICKER_BG[color]}`}
           >
             {label}
           </h2>

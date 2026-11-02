@@ -35,7 +35,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project.title} on GitHub`}
-                    className="shrink-0 rounded-xs text-sm text-coral underline decoration-coral/60 underline-offset-4 transition hover:text-cream hover:decoration-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
+                    className="shrink-0 rounded-xs text-sm text-cream underline decoration-coral/60 underline-offset-4 transition hover:text-coral hover:decoration-coral focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
                   >
                     GitHub &#8599;
                   </a>

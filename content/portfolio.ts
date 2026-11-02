@@ -38,24 +38,17 @@ export interface SocialLink {
   external?: boolean;
 }
 
-export interface HeroCta {
-  label: string;
-  href: string;
-}
-
 export interface HeroContent {
   headline: string;
   intro: readonly [string, string];
-  cta: HeroCta;
-  availability: string;
 }
 
 export type StickerColor = "teal" | "pink" | "yellow" | "orange" | "green";
-export type StickerShape = "tag" | "circle";
+export type StickerShape = "tag" | "circle" | "chip";
 
 export interface StickerItem {
   label: string;
-  color: StickerColor;
+  color?: StickerColor;
   shape: StickerShape;
   x: number;
   y: number;
@@ -79,17 +72,19 @@ export const HERO: HeroContent = {
     "I'm a Software Engineering undergraduate at Informatics Institute of Technology, affiliated with the University of Westminster, based in Colombo, Sri Lanka.",
     "I build reliable backend systems and full-stack applications, with a focus on clean architecture, testing and security.",
   ],
-  cta: { label: "Get in touch", href: "#contact" },
-  availability: "Available for opportunities",
 } as const;
 
 export const STICKERS: readonly StickerItem[] = [
-  { label: "Backend Systems", color: "teal", shape: "circle", x: 6, y: 14, rotate: -8, mobile: true },
-  { label: "REST APIs", color: "pink", shape: "tag", x: 64, y: 18, rotate: 7, mobile: true },
-  { label: "PostgreSQL", color: "yellow", shape: "tag", x: 18, y: 46, rotate: 6, mobile: false },
-  { label: "Testing & CI", color: "orange", shape: "tag", x: 5, y: 70, rotate: -5, mobile: true },
-  { label: "Security", color: "green", shape: "circle", x: 74, y: 42, rotate: -9, mobile: false },
-  { label: "Full-Stack", color: "teal", shape: "tag", x: 63, y: 72, rotate: 5, mobile: false },
+  { label: "Backend Systems", color: "teal", shape: "circle", x: 4, y: 10, rotate: -8, mobile: true },
+  { label: "Python", shape: "chip", x: 18, y: 28, rotate: 5, mobile: false },
+  { label: "Java", shape: "chip", x: 15, y: 54, rotate: -6, mobile: false },
+  { label: "Testing & CI", color: "orange", shape: "tag", x: 3, y: 74, rotate: -5, mobile: false },
+  { label: "C++", shape: "chip", x: 16, y: 84, rotate: 4, mobile: true },
+  { label: "Go", shape: "chip", x: 64, y: 10, rotate: -4, mobile: true },
+  { label: "REST APIs", color: "pink", shape: "tag", x: 73, y: 24, rotate: 7, mobile: true },
+  { label: "TypeScript", shape: "chip", x: 58, y: 46, rotate: 6, mobile: false },
+  { label: "Security", color: "green", shape: "circle", x: 75, y: 54, rotate: -9, mobile: false },
+  { label: "C#", shape: "chip", x: 62, y: 82, rotate: -5, mobile: false },
 ] as const;
 
 export const ABOUT: AboutContent = {
@@ -99,7 +94,7 @@ export const ABOUT: AboutContent = {
   ],
   facts: [
     { label: "Based in", value: "Colombo, Sri Lanka" },
-    { label: "Studying", value: "BEng Software Engineering, Informatics Institute of Technology (University of Westminster)" },
+    { label: "Studying", value: "BEng (Hons) Software Engineering, Informatics Institute of Technology (University of Westminster)" },
     { label: "Focus", value: "Backend and reliable systems" },
     { label: "Status", value: "Open to internships and opportunities" },
   ],
@@ -136,7 +131,7 @@ export const SOCIALS: readonly SocialLink[] = [
 export const SKILLS: readonly SkillCategory[] = [
   { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "Vite", "TanStack Query", "React Router", "GSAP", "shadcn/ui", "Leaflet"] },
   { title: "Backend & Frameworks", items: ["Node.js", "Express", "PHP", ".NET", "ASP.NET Core", "Spring Boot", "Entity Framework Core", "Hibernate", "Prisma", "BullMQ", "FastAPI"] },
-  { title: "Programming Languages", items: ["Java", "Python", "TypeScript", "C#", "Go"] },
+  { title: "Programming Languages", items: ["Java", "Python", "TypeScript", "C#", "Go", "C++"] },
   { title: "Databases", items: ["PostgreSQL", "MySQL", "SQLite", "Redis"] },
   { title: "Tools", items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Figma", "Maven", "Vercel", "Docker", "GitHub Actions", "ESLint", "Semgrep", "Railway", "Rider", "Ruff", "golangci-lint", "SonarQube Cloud"] },
   { title: "Testing", items: ["JUnit", "Mockito", "xUnit", "Testcontainers", "pytest", "Vitest"] },
@@ -263,14 +258,14 @@ export const PROJECTS: readonly Project[] = [
   {
     title: "Portfolio Website",
     year: "2026",
-    desc: "This portfolio is a modern, animated single-page application with an interactive canvas name reveal, a shuffle subtitle animation, responsive navigation and a project showcase.",
+    desc: "This portfolio: a single-page Next.js site with a full-screen hero, an interactive canvas headline, a black-and-white cutout portrait with skill stickers, and list-based sections built from reusable server components.",
     points: [
-      "Built with Next.js and TypeScript for a performant, type-safe application structure.",
-      "Implemented an animated hero with interactive canvas name reveal and shuffle subtitle.",
-      "Used Framer Motion for scroll-triggered reveal animations across sections.",
-      "Deployed to Vercel with responsive layouts optimised for desktop, tablet, and mobile.",
+      "Built with the Next.js App Router and TypeScript, using server components by default and client components only for the navbar, splash screen and animations.",
+      "Created a token-based theme with Tailwind CSS 4 (@theme), defining colours and fonts once and reusing them across the site.",
+      "Built reusable Section and Row layout components, so every content section shares one consistent structure.",
+      "Kept all content in one typed data file, separating what the site says from how it is laid out.",
     ],
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/rithikamandiv-ux/portfolio",
   },
 ] as const;
