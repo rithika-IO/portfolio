@@ -21,7 +21,7 @@ export default function Section({ id, label, color, children }: SectionProps) {
   return (
     <section
       id={id}
-      className="mx-auto max-w-7xl border-t border-cream/15 px-6 py-16 md:py-24"
+      className="mx-auto max-w-7xl scroll-mt-20 border-t border-cream/15 px-6 py-16 md:py-24"
     >
       <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12">
         <div className="md:col-span-3">
