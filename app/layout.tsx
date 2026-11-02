@@ -14,6 +14,7 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rithikamandiv.me"),
   title: "Rithika Mandiv | Software Engineer",
   description:
     "Portfolio of Rithika Mandiv, a Software Engineering undergraduate building web, desktop and data-driven applications.",
