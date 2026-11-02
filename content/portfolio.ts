@@ -38,6 +38,50 @@ export interface SocialLink {
   external?: boolean;
 }
 
+export interface HeroCta {
+  label: string;
+  href: string;
+}
+
+export interface HeroContent {
+  headline: string;
+  intro: readonly [string, string];
+  cta: HeroCta;
+  availability: string;
+}
+
+export type StickerColor = "teal" | "pink" | "yellow" | "orange" | "green";
+export type StickerShape = "tag" | "circle";
+
+export interface StickerItem {
+  label: string;
+  color: StickerColor;
+  shape: StickerShape;
+  x: number;
+  y: number;
+  rotate: number;
+  mobile: boolean;
+}
+
+export const HERO: HeroContent = {
+  headline: "SOFTWARE ENGINEER",
+  intro: [
+    "I'm a Software Engineering undergraduate at Informatics Institute of Technology, affiliated with the University of Westminster, based in Colombo, Sri Lanka.",
+    "I build reliable backend systems and full-stack applications, with a focus on clean architecture, testing and security.",
+  ],
+  cta: { label: "Get in touch", href: "#contact" },
+  availability: "Available for opportunities",
+} as const;
+
+export const STICKERS: readonly StickerItem[] = [
+  { label: "Backend Systems", color: "teal", shape: "circle", x: 6, y: 14, rotate: -8, mobile: true },
+  { label: "REST APIs", color: "pink", shape: "tag", x: 64, y: 18, rotate: 7, mobile: true },
+  { label: "PostgreSQL", color: "yellow", shape: "tag", x: 18, y: 46, rotate: 6, mobile: false },
+  { label: "Testing & CI", color: "orange", shape: "tag", x: 5, y: 70, rotate: -5, mobile: true },
+  { label: "Security", color: "green", shape: "circle", x: 74, y: 42, rotate: -9, mobile: false },
+  { label: "Full-Stack", color: "teal", shape: "tag", x: 63, y: 72, rotate: 5, mobile: false },
+] as const;
+
 export const NAV_LINKS: readonly NavLink[] = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
