@@ -42,14 +42,14 @@ export default function SplashScreen() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-[9999] flex items-center justify-center"
-          style={{ backgroundColor: "var(--color-background)" }}
+          style={{ backgroundColor: "var(--color-ink)" }}
           aria-hidden="true"
         >
           <StrokeText
             text="Rithika"
             className="font-[family-name:var(--font-dancing-script)]"
-            strokeColor="#f2e9e4"
-            fillColor="#f2e9e4"
+            strokeColor="#ECE7E0"
+            fillColor="#ECE7E0"
             strokeWidth={1}
             fontSize={128}
             fontWeight={700}

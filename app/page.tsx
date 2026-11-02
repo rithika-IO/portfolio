@@ -12,10 +12,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-transparent text-[#F2E9E4]">
       {/* ── Background ── */}
-      <div className="fixed inset-0 -z-10 bg-[#0b0b12]">
-        <div className="stars" />
-        <div className="stars stars2" />
-      </div>
+      <div className="grain fixed inset-0 -z-10 bg-charcoal" />
 
       <Navbar />
       <Hero />

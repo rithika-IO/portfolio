@@ -41,7 +41,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3" aria-label="Rithika Mandiv, home">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C9ADA7] font-bold text-[#22223B]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cream font-bold text-ink">
             <MonogramLogo className="h-[26px] w-[26px]" />
           </div>
           <span className="text-xl font-bold">Rithika</span>
