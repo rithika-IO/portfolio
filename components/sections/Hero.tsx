@@ -1,81 +1,75 @@
-import Shuffle from "@/components/ui/Shuffle";
-import HeroName from "@/components/ui/HeroName";
-import HeroAvatar from "@/components/ui/HeroAvatar";
-import Reveal from "@/components/ui/Reveal";
-import { SOCIALS } from "@/content/portfolio";
+import Image from "next/image";
+import HeroHeadline from "@/components/ui/HeroHeadline";
+import Signature from "@/components/ui/Signature";
+import Sticker from "@/components/ui/Sticker";
+import { HERO, STICKERS, type StickerColor } from "@/content/portfolio";
+
+const HIGHLIGHT_CLASSES: Record<StickerColor, string> = {
+  teal: "bg-sticker-teal text-ink",
+  pink: "bg-sticker-pink text-ink",
+  yellow: "bg-sticker-yellow text-ink",
+  orange: "bg-sticker-orange text-ink",
+  green: "bg-sticker-green text-ink",
+};
 
 export default function Hero() {
   return (
-    <Reveal>
-      <section id="home" className="px-6 pb-24 pt-36">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2">
-          <div>
-            <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-white/80 backdrop-blur-md">
-              ● Available for Opportunities
-            </span>
-
-            {/* Hero name: two lines of interactive canvas text */}
-            <HeroName />
-
-            {/* Shuffle subtitle: plays once on scroll-enter, with no hover replay and no loop */}
-            <div className="mt-8">
-              <Shuffle
-                text="Software Engineering Undergraduate"
-                tag="p"
-                className="text-xl font-semibold md:text-2xl"
-                style={{ color: "#ffffff", textAlign: "left", fontFamily: "inherit" }}
-                shuffleDirection="up"
-                duration={0.7}
-                stagger={0.04}
-                shuffleTimes={2}
-                animationMode="evenodd"
-                loop={false}
-                triggerOnce={true}
-                triggerOnHover={true}
-                threshold={0.1}
-                rootMargin="0px"
-              />
-            </div>
-
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#F2E9E4]/80">
-              I design and build software across web, desktop, and data
-              systems from full-stack apps to Java desktop tools and Python
-              ML pipelines.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#projects"
-                className="rounded-full bg-[#C9ADA7] px-6 py-3 font-semibold text-[#22223B] hover:bg-[#F2E9E4]"
-              >
-                View My Work
-              </a>
-            </div>
-
-            <div className="mt-6 flex gap-5 text-white/70">
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.href}
-                  href={social.href}
-                  {...(social.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="hover:text-[#C9ADA7]"
-                >
-                  {social.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Profile image */}
-          <div className="flex justify-center">
-            <div className="absolute h-[26rem] w-[26rem] rounded-full bg-[#C9ADA7]/10 blur-3xl" />
-            <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-[#C9ADA7]/40 bg-black/40 shadow-[0_0_60px_rgba(201,173,167,0.25)] md:h-[24rem] md:w-[24rem]">
-              <HeroAvatar />
-            </div>
-          </div>
+    <section id="home" className="relative flex min-h-svh flex-col bg-ink">
+      {/* ── Top (ink) ── */}
+      <div className="mx-auto w-full max-w-7xl px-6 pt-18 pb-3 md:pt-20 md:pb-5">
+        <div className="relative">
+          <HeroHeadline />
+          <Signature className="pointer-events-none absolute right-2 bottom-2 -rotate-8 text-[clamp(3.75rem,8.5vw,8.5rem)] leading-none select-none md:right-6 md:bottom-3" />
         </div>
-      </section>
-    </Reveal>
+
+        <div className="mt-3 grid grid-cols-1 items-start gap-3 md:mt-5 md:grid-cols-12 md:gap-8 lg:mt-6">
+          <p className="font-serif text-base leading-snug font-semibold text-cream md:col-span-6 md:text-lg lg:text-xl">
+            {HERO.intro[0]}
+          </p>
+          <p className="font-sans text-sm leading-relaxed text-cream/85 md:col-span-6 md:text-base lg:text-lg">
+            {HERO.intro[1].map((segment, index) =>
+              segment.highlight ? (
+                <span
+                  key={index}
+                  className={`rounded-xs box-decoration-clone px-1 py-0.5 font-medium ${HIGHLIGHT_CLASSES[segment.highlight]}`}
+                >
+                  {segment.text}
+                </span>
+              ) : (
+                <span key={index}>{segment.text}</span>
+              ),
+            )}
+          </p>
+        </div>
+      </div>
+
+      {/* ── Bottom (cream grid-paper panel + portrait + stickers) ── */}
+      <div className="relative flex min-h-[220px] flex-1 pr-3 sm:pr-6 md:min-h-[240px] md:pr-10 lg:pr-14">
+        <div
+          className="relative min-h-full w-full flex-1 overflow-hidden rounded-r-[5rem] bg-cream md:rounded-r-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        >
+          {STICKERS.map((sticker) => (
+            <Sticker key={sticker.label} {...sticker} />
+          ))}
+
+          <Image
+            src="/portrait.webp"
+            alt="Rithika Mandiv"
+            width={1200}
+            height={1500}
+            preload
+            fetchPriority="high"
+            sizes="(max-width: 768px) 65vw, 30vw"
+            style={{ width: "auto" }}
+            className="pointer-events-none absolute bottom-0 left-1/2 h-[95%] max-w-full -translate-x-1/2 object-contain object-bottom select-none"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
-

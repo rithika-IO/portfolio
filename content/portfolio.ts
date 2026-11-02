@@ -1,14 +1,14 @@
-export interface NavLink {
+interface NavLink {
   href: string;
   label: string;
 }
 
-export interface SkillCategory {
+interface SkillCategory {
   title: string;
   items: readonly string[];
 }
 
-export interface Project {
+interface Project {
   title: string;
   year: string;
   desc: string;
@@ -17,33 +17,104 @@ export interface Project {
   github: string;
 }
 
-export interface EducationItem {
+interface EducationItem {
   title: string;
   place: string;
   date: string;
   desc: string;
 }
 
-export interface Achievement {
+interface Achievement {
   title: string;
   place: string;
   status: string;
   desc: string;
 }
 
-export interface SocialLink {
+interface SocialLink {
   label: string;
   contactLabel?: string;
   href: string;
   external?: boolean;
 }
 
+export type StickerColor = "teal" | "pink" | "yellow" | "orange" | "green";
+type StickerShape = "tag" | "circle";
+
+interface HeroIntroSegment {
+  text: string;
+  highlight?: StickerColor;
+}
+
+interface HeroContent {
+  headline: string;
+  intro: readonly [string, readonly HeroIntroSegment[]];
+}
+
+export interface StickerItem {
+  label: string;
+  color: StickerColor;
+  shape: StickerShape;
+  x: number;
+  y: number;
+  rotate: number;
+  mobile: boolean;
+}
+
+interface AboutFact {
+  label: string;
+  value: string;
+}
+
+interface AboutContent {
+  paragraphs: readonly [string, string];
+  facts: readonly AboutFact[];
+}
+
+export const HERO: HeroContent = {
+  headline: "SOFTWARE ENGINEER",
+  intro: [
+    "I'm a Software Engineering undergraduate at Informatics Institute of Technology, affiliated with the University of Westminster, based in Colombo, Sri Lanka.",
+    [
+      { text: "I build " },
+      { text: "reliable backend systems", highlight: "teal" },
+      { text: " and " },
+      { text: "full-stack applications", highlight: "pink" },
+      { text: ", with a focus on " },
+      { text: "clean architecture, testing and security", highlight: "yellow" },
+      { text: "." },
+    ],
+  ],
+} as const;
+
+export const STICKERS: readonly StickerItem[] = [
+  { label: "Backend Systems", color: "teal", shape: "circle", x: 5, y: 10, rotate: -8, mobile: true },
+  { label: "AI/ML", color: "yellow", shape: "circle", x: 14, y: 40, rotate: 6, mobile: false },
+  { label: "Testing & CI", color: "orange", shape: "tag", x: 4, y: 74, rotate: -5, mobile: true },
+  { label: "REST APIs", color: "pink", shape: "tag", x: 70, y: 12, rotate: 7, mobile: true },
+  { label: "Security", color: "green", shape: "circle", x: 76, y: 40, rotate: -9, mobile: false },
+  { label: "Full-Stack Enterprise Apps", color: "teal", shape: "tag", x: 62, y: 74, rotate: 4, mobile: false },
+] as const;
+
+export const ABOUT: AboutContent = {
+  paragraphs: [
+    "I'm a Software Engineering undergraduate who likes understanding how systems work underneath: queues, databases, APIs and the code that keeps them reliable.",
+    "I learn by building real projects, from a GitHub-integrated code analysis platform to a background job engine in .NET, and I care about testing, security and clean architecture as much as features.",
+  ],
+  facts: [
+    { label: "Based in", value: "Colombo, Sri Lanka" },
+    { label: "Studying", value: "BEng (Hons) Software Engineering, Informatics Institute of Technology (University of Westminster)" },
+    { label: "Focus", value: "Backend and reliable systems" },
+    { label: "Status", value: "Open to internships and opportunities" },
+  ],
+} as const;
+
 export const NAV_LINKS: readonly NavLink[] = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
   { href: "#education", label: "Education" },
-  { href: "#achievements", label: "Achievements" },
+  { href: "#achievements", label: "Certificates" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -69,7 +140,7 @@ export const SOCIALS: readonly SocialLink[] = [
 export const SKILLS: readonly SkillCategory[] = [
   { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "Vite", "TanStack Query", "React Router", "GSAP", "shadcn/ui", "Leaflet"] },
   { title: "Backend & Frameworks", items: ["Node.js", "Express", "PHP", ".NET", "ASP.NET Core", "Spring Boot", "Entity Framework Core", "Hibernate", "Prisma", "BullMQ", "FastAPI"] },
-  { title: "Programming Languages", items: ["Java", "Python", "TypeScript", "C#", "Go"] },
+  { title: "Programming Languages", items: ["Java", "Python", "TypeScript", "C#", "Go", "C++"] },
   { title: "Databases", items: ["PostgreSQL", "MySQL", "SQLite", "Redis"] },
   { title: "Tools", items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Figma", "Maven", "Vercel", "Docker", "GitHub Actions", "ESLint", "Semgrep", "Railway", "Rider", "Ruff", "golangci-lint", "SonarQube Cloud"] },
   { title: "Testing", items: ["JUnit", "Mockito", "xUnit", "Testcontainers", "pytest", "Vitest"] },
@@ -196,14 +267,14 @@ export const PROJECTS: readonly Project[] = [
   {
     title: "Portfolio Website",
     year: "2026",
-    desc: "This portfolio is a modern, animated single-page application with an interactive canvas name reveal, a shuffle subtitle animation, responsive navigation and a project showcase.",
+    desc: "This portfolio: a single-page Next.js site with a full-screen hero, an interactive canvas headline, a black-and-white cutout portrait with skill stickers, and list-based sections built from reusable server components.",
     points: [
-      "Built with Next.js and TypeScript for a performant, type-safe application structure.",
-      "Implemented an animated hero with interactive canvas name reveal and shuffle subtitle.",
-      "Used Framer Motion for scroll-triggered reveal animations across sections.",
-      "Deployed to Vercel with responsive layouts optimised for desktop, tablet, and mobile.",
+      "Built with the Next.js App Router and TypeScript, using server components by default and client components only for the navbar, splash screen and animations.",
+      "Created a token-based theme with Tailwind CSS 4 (@theme), defining colours and fonts once and reusing them across the site.",
+      "Built reusable Section and Row layout components, so every content section shares one consistent structure.",
+      "Kept all content in one typed data file, separating what the site says from how it is laid out.",
     ],
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/rithikamandiv-ux/portfolio",
   },
 ] as const;

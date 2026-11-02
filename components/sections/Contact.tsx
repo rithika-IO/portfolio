@@ -1,4 +1,5 @@
-import Reveal from "@/components/ui/Reveal";
+import Section from "@/components/ui/Section";
+import Row from "@/components/ui/Row";
 import { SOCIALS } from "@/content/portfolio";
 
 const CONTACT_SOCIALS = [
@@ -8,35 +9,49 @@ const CONTACT_SOCIALS = [
 
 export default function Contact() {
   return (
-    <Reveal>
-      <section id="contact" className="px-6 py-24">
-        <div className="mx-auto max-w-7xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C9ADA7]">
-            Get in touch
+    <Section id="contact" label="Contact" color="teal">
+      <Row
+        main={
+          <h3 className="font-display text-5xl leading-none tracking-wide text-cream md:text-7xl">
+            LET&apos;S TALK
+          </h3>
+        }
+        aside={
+          <p className="text-sm leading-relaxed text-cream/80 md:text-base">
+            I&apos;m open to internships, collaborations and interesting
+            projects. The fastest way to reach me is email.
           </p>
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-            Contact <span className="text-[#C9ADA7]">Me</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-white/70">
-            I&apos;m open to opportunities, collaborations, and projects.
-            Feel free to reach out.
-          </p>
+        }
+      />
 
-          <div className="mt-12 flex flex-col gap-4 md:flex-row md:justify-center">
+      <Row
+        main={
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {CONTACT_SOCIALS.map((social) => (
               <a
                 key={social.href}
                 href={social.href}
-                {...(social.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="rounded-2xl border border-white/10 bg-black/40 px-6 py-4 backdrop-blur-md transition hover:bg-[#C9ADA7] hover:text-[#22223B]"
+                {...(social.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="flex items-start justify-between gap-4 rounded-xl bg-coral p-5 text-ink! no-underline! transition duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:text-ink! focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream! md:p-6"
               >
-                {social.contactLabel ?? social.label}
+                <div>
+                  <span className="block font-display text-2xl leading-none tracking-wide uppercase">
+                    {social.label}
+                  </span>
+                  <span className="mt-2 block font-sans text-sm">
+                    {social.contactLabel ?? social.label}
+                  </span>
+                </div>
+                <span aria-hidden="true" className="text-lg leading-none">
+                  {social.external ? "↗" : "→"}
+                </span>
               </a>
             ))}
           </div>
-        </div>
-      </section>
-    </Reveal>
+        }
+      />
+    </Section>
   );
 }
-

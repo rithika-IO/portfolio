@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Dancing_Script } from "next/font/google";
+import { Inter, Dancing_Script, Bebas_Neue, Fraunces } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "@/components/ui/SplashScreen";
 
@@ -13,11 +13,36 @@ const dancingScript = Dancing_Script({
   subsets: ["latin"],
 });
 
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  variable: "--font-bebas",
+  subsets: ["latin"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+});
+
+const title = "Rithika Mandiv | Software Engineer";
+const description =
+  "Portfolio of Rithika Mandiv, a Software Engineering undergraduate building web, desktop and data-driven applications.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://rithikamandiv.me"),
-  title: "Rithika Mandiv | Software Engineer",
-  description:
-    "Portfolio of Rithika Mandiv, a Software Engineering undergraduate building web, desktop and data-driven applications.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: "Rithika Mandiv",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dancingScript.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${dancingScript.variable} ${bebasNeue.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
         <SplashScreen />
         {children}
