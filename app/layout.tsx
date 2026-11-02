@@ -24,11 +24,25 @@ const fraunces = Fraunces({
   subsets: ["latin"],
 });
 
+const title = "Rithika Mandiv | Software Engineer";
+const description =
+  "Portfolio of Rithika Mandiv, a Software Engineering undergraduate building web, desktop and data-driven applications.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://rithikamandiv.me"),
-  title: "Rithika Mandiv | Software Engineer",
-  description:
-    "Portfolio of Rithika Mandiv, a Software Engineering undergraduate building web, desktop and data-driven applications.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: "Rithika Mandiv",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

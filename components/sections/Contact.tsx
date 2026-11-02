@@ -26,29 +26,30 @@ export default function Contact() {
 
       <Row
         main={
-          <span className="font-display text-lg tracking-wider text-muted uppercase">
-            Reach me
-          </span>
-        }
-        aside={
-          <ul className="space-y-3 text-sm md:text-base">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {CONTACT_SOCIALS.map((social) => (
-              <li key={social.href} className="flex items-baseline gap-4">
-                <span className="w-24 shrink-0 font-display text-sm tracking-wider text-muted uppercase">
-                  {social.label}
+              <a
+                key={social.href}
+                href={social.href}
+                {...(social.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="flex items-start justify-between gap-4 rounded-xl bg-coral p-5 text-ink! no-underline! transition duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:text-ink! focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream! md:p-6"
+              >
+                <div>
+                  <span className="block font-display text-2xl leading-none tracking-wide uppercase">
+                    {social.label}
+                  </span>
+                  <span className="mt-2 block font-sans text-sm">
+                    {social.contactLabel ?? social.label}
+                  </span>
+                </div>
+                <span aria-hidden="true" className="text-lg leading-none">
+                  {social.external ? "↗" : "→"}
                 </span>
-                <a
-                  href={social.href}
-                  {...(social.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="rounded-xs text-cream underline decoration-coral/60 underline-offset-4 transition hover:text-coral hover:decoration-coral focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
-                >
-                  {social.contactLabel ?? social.label}
-                </a>
-              </li>
+              </a>
             ))}
-          </ul>
+          </div>
         }
       />
     </Section>

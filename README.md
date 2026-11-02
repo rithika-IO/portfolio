@@ -1,51 +1,42 @@
 # Rithika Mandiv | Portfolio
 
-A personal developer portfolio built with Next.js, TypeScript, and Tailwind CSS, showcasing my
-work across full-stack web development, Java desktop applications, Python and machine learning
-systems, and cybersecurity.
+Personal software engineering portfolio built with Next.js, TypeScript, and Tailwind CSS 4.
+
+Live site: https://rithikamandiv.me
 
 ---
 
-## Live Website
+## Design
 
-https://rithikamandiv.me
-
----
-
-## About This Project
-
-This is my personal developer portfolio, built to present my projects, technical skills, and
-background through a clean, responsive, and interactive interface. Individual projects shown on
-the site have their own repositories, linked from the site itself, and this repository is for the
-portfolio site only.
+The site opens with a full-screen hero featuring an interactive canvas headline (`TechText`), a black-and-white cutout portrait framed by colour-coded skill stickers on a cream grid-paper panel, and a handwritten signature overlay. Below the fold, all content sections (About, Projects, Skills, Education, Certificates, and Contact) use a consistent list-based layout built from reusable `Section` and `Row` server components with rotated sticker labels and dashed dividers.
 
 ---
 
 ## Tech Stack
 
-- Framework: Next.js (App Router)
+- Framework: Next.js (App Router) and React
 - Language: TypeScript
-- Styling: Tailwind CSS
-- Animations: Framer Motion, GSAP
-- Interactive text and visual effects: React Bits components
-- Deployment: Vercel (custom domain via Namecheap)
-- Version control: Git and GitHub
+- Styling: Tailwind CSS 4 (`@theme` design tokens)
+- Animations: Framer Motion (scroll reveals and mobile menu), GSAP (splash screen stroke draw)
+- Typography: Bebas Neue, Fraunces, Inter, and Dancing Script loaded via `next/font/google`
+- Deployment: Vercel with a Namecheap custom domain (`rithikamandiv.me`)
 
 ---
 
-## Installation and Setup
+## Architecture
 
-Clone the repository:
+Pages and sections are React Server Components by default. Client boundaries are limited to interactive and animated UI:
 
-```bash
-git clone https://github.com/rithikamandiv-ux/portfolio.git
-```
+- `components/layout/Navbar.tsx`: scroll spy, active section tracking, and mobile navigation menu
+- `components/ui/Reveal.tsx`: scroll-triggered fade-up wrapper with `prefers-reduced-motion` support
+- `components/ui/SplashScreen.tsx` (with `StrokeText.tsx` and `useSplashVisibility.ts`): once-per-session SVG stroke-draw splash screen
+- `components/ui/TechText.tsx`: interactive HTML5 canvas particle and glyph-drag headline
 
-Navigate into the project directory:
+All structured portfolio copy, project entries, skills, education, certificates, stickers, and navigation links live in `content/portfolio.ts`.
 
-```bash
-cd portfolio
-```
+---
+
+## Getting Started
 
 Install dependencies:
 
@@ -53,41 +44,19 @@ Install dependencies:
 npm install
 ```
 
-Run the development server:
+Run the development server at `http://localhost:3000`:
 
 ```bash
 npm run dev
 ```
 
-Open the application in your browser:
-
-```text
-http://localhost:3000
-```
-
----
-
-## Available Scripts
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Build the production version:
+Build for production:
 
 ```bash
 npm run build
 ```
 
-Start the production build locally:
-
-```bash
-npm start
-```
-
-Run linting:
+Run ESLint:
 
 ```bash
 npm run lint
@@ -98,36 +67,52 @@ npm run lint
 ## Project Structure
 
 ```text
-portfolio/
+rithika-portfolio/
 ├── app/
+│   ├── apple-icon.png
+│   ├── favicon.ico
 │   ├── globals.css
+│   ├── icon.svg
 │   ├── layout.tsx
+│   ├── opengraph-image.alt.txt
+│   ├── opengraph-image.png
 │   └── page.tsx
 ├── components/
+│   ├── layout/
+│   │   ├── Footer.tsx
+│   │   └── Navbar.tsx
+│   ├── sections/
+│   │   ├── About.tsx
+│   │   ├── Achievements.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Education.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Projects.tsx
+│   │   └── Skills.tsx
 │   └── ui/
-│       ├── DitherVeil.tsx
-│       ├── HeroAvatar.tsx
-│       ├── HeroName.tsx
+│       ├── HeroHeadline.tsx
 │       ├── MonogramLogo.tsx
-│       ├── Shuffle.tsx
+│       ├── Reveal.tsx
+│       ├── Row.tsx
+│       ├── Section.tsx
+│       ├── Signature.tsx
 │       ├── SplashScreen.tsx
+│       ├── Sticker.tsx
 │       ├── StrokeText.tsx
 │       ├── TechText.tsx
 │       └── useSplashVisibility.ts
+├── content/
+│   └── portfolio.ts
 ├── public/
-│   └── profile.jpg
+│   └── portrait.webp
+├── eslint.config.mjs
+├── next.config.ts
 ├── package.json
+├── postcss.config.mjs
 ├── tsconfig.json
+├── LICENSE
 └── README.md
 ```
-
----
-
-## Deployment
-
-Deployed on Vercel at https://rithikamandiv.me, a custom domain registered with Namecheap.
-The GitHub repository is connected to Vercel, so changes pushed to the `main` branch trigger
-automatic production deployments.
 
 ---
 

@@ -22,40 +22,54 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  /* Track which section is in view */
+  /* Track scroll position and active section */
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
-    );
+    let rafId = 0;
 
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    const updateScrollState = () => {
+      rafId = 0;
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const scrolled = scrollY > 24;
 
-    return () => observer.disconnect();
-  }, []);
+      setIsScrolled((prev) => (prev === scrolled ? prev : scrolled));
 
-  /* Track scroll position near top and bottom of page */
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
-      const nearBottom =
-        window.innerHeight + Math.ceil(window.scrollY) >=
-        document.documentElement.scrollHeight - 24;
-      if (nearBottom) {
-        setActiveSection("contact");
+      const atBottom =
+        viewportHeight + Math.ceil(scrollY) >=
+        document.documentElement.scrollHeight - 8;
+
+      let nextSection: (typeof SECTION_IDS)[number] = "home";
+      if (atBottom) {
+        nextSection = "contact";
+      } else {
+        const threshold = viewportHeight * 0.35;
+        for (const id of SECTION_IDS) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= threshold) {
+            nextSection = id;
+          }
+        }
       }
+
+      setActiveSection((prev) => (prev === nextSection ? prev : nextSection));
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const scheduleUpdate = () => {
+      if (rafId !== 0) return;
+      rafId = window.requestAnimationFrame(updateScrollState);
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (rafId !== 0) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   /* Close mobile menu on Escape */
@@ -77,20 +91,30 @@ export default function Navbar() {
   const desktopLinkClass = (href: string) => {
     const section = href.replace(/^#/, "");
     const isActive = activeSection === section;
+    const isContact = href === "#contact";
 
     return `rounded-xs font-display text-base tracking-wider uppercase transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral ${
       isActive
         ? "text-coral underline decoration-coral underline-offset-4"
-        : "text-cream/70 hover:text-coral"
+        : isContact
+          ? "text-coral"
+          : "text-cream/70 hover:text-coral"
     }`;
   };
 
   const mobileLinkClass = (href: string) => {
     const section = href.replace(/^#/, "");
     const isActive = activeSection === section;
+    const isContact = href === "#contact";
 
     return `w-fit rounded-xs font-display text-2xl tracking-wider uppercase transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral ${
-      isActive ? "text-coral" : "text-cream/80 hover:text-coral"
+      isContact
+        ? isActive
+          ? "text-coral underline decoration-coral underline-offset-4"
+          : "text-coral"
+        : isActive
+          ? "text-coral"
+          : "text-cream/80 hover:text-coral"
     }`;
   };
 
@@ -113,8 +137,7 @@ export default function Navbar() {
             <MonogramLogo className="h-[26px] w-[26px]" />
           </div>
           <span className="flex flex-col font-serif text-sm leading-tight font-semibold text-cream">
-            <span>Rithika</span>
-            <span>Mandiv</span>
+            <span>Rithika</span> <span>Mandiv</span>
           </span>
         </a>
 

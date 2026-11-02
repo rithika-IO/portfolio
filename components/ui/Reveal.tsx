@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
-export const fadeUp = {
+const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   show: {
     opacity: 1,
@@ -19,12 +19,18 @@ export default function Reveal({
   children: ReactNode;
   delay?: number;
 }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <>{children}</>;
+  }
+
   return (
     <motion.div
       variants={fadeUp}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: "some", margin: "0px 0px -10% 0px" }}
       transition={{ delay }}
     >
       {children}

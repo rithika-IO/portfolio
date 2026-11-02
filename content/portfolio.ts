@@ -1,14 +1,14 @@
-export interface NavLink {
+interface NavLink {
   href: string;
   label: string;
 }
 
-export interface SkillCategory {
+interface SkillCategory {
   title: string;
   items: readonly string[];
 }
 
-export interface Project {
+interface Project {
   title: string;
   year: string;
   desc: string;
@@ -17,38 +17,43 @@ export interface Project {
   github: string;
 }
 
-export interface EducationItem {
+interface EducationItem {
   title: string;
   place: string;
   date: string;
   desc: string;
 }
 
-export interface Achievement {
+interface Achievement {
   title: string;
   place: string;
   status: string;
   desc: string;
 }
 
-export interface SocialLink {
+interface SocialLink {
   label: string;
   contactLabel?: string;
   href: string;
   external?: boolean;
 }
 
-export interface HeroContent {
-  headline: string;
-  intro: readonly [string, string];
+export type StickerColor = "teal" | "pink" | "yellow" | "orange" | "green";
+type StickerShape = "tag" | "circle";
+
+interface HeroIntroSegment {
+  text: string;
+  highlight?: StickerColor;
 }
 
-export type StickerColor = "teal" | "pink" | "yellow" | "orange" | "green";
-export type StickerShape = "tag" | "circle" | "chip";
+interface HeroContent {
+  headline: string;
+  intro: readonly [string, readonly HeroIntroSegment[]];
+}
 
 export interface StickerItem {
   label: string;
-  color?: StickerColor;
+  color: StickerColor;
   shape: StickerShape;
   x: number;
   y: number;
@@ -56,12 +61,12 @@ export interface StickerItem {
   mobile: boolean;
 }
 
-export interface AboutFact {
+interface AboutFact {
   label: string;
   value: string;
 }
 
-export interface AboutContent {
+interface AboutContent {
   paragraphs: readonly [string, string];
   facts: readonly AboutFact[];
 }
@@ -70,21 +75,25 @@ export const HERO: HeroContent = {
   headline: "SOFTWARE ENGINEER",
   intro: [
     "I'm a Software Engineering undergraduate at Informatics Institute of Technology, affiliated with the University of Westminster, based in Colombo, Sri Lanka.",
-    "I build reliable backend systems and full-stack applications, with a focus on clean architecture, testing and security.",
+    [
+      { text: "I build " },
+      { text: "reliable backend systems", highlight: "teal" },
+      { text: " and " },
+      { text: "full-stack applications", highlight: "pink" },
+      { text: ", with a focus on " },
+      { text: "clean architecture, testing and security", highlight: "yellow" },
+      { text: "." },
+    ],
   ],
 } as const;
 
 export const STICKERS: readonly StickerItem[] = [
-  { label: "Backend Systems", color: "teal", shape: "circle", x: 4, y: 10, rotate: -8, mobile: true },
-  { label: "Python", shape: "chip", x: 18, y: 28, rotate: 5, mobile: false },
-  { label: "Java", shape: "chip", x: 15, y: 54, rotate: -6, mobile: false },
-  { label: "Testing & CI", color: "orange", shape: "tag", x: 3, y: 74, rotate: -5, mobile: false },
-  { label: "C++", shape: "chip", x: 16, y: 84, rotate: 4, mobile: true },
-  { label: "Go", shape: "chip", x: 64, y: 10, rotate: -4, mobile: true },
-  { label: "REST APIs", color: "pink", shape: "tag", x: 73, y: 24, rotate: 7, mobile: true },
-  { label: "TypeScript", shape: "chip", x: 58, y: 46, rotate: 6, mobile: false },
-  { label: "Security", color: "green", shape: "circle", x: 75, y: 54, rotate: -9, mobile: false },
-  { label: "C#", shape: "chip", x: 62, y: 82, rotate: -5, mobile: false },
+  { label: "Backend Systems", color: "teal", shape: "circle", x: 5, y: 10, rotate: -8, mobile: true },
+  { label: "AI/ML", color: "yellow", shape: "circle", x: 14, y: 40, rotate: 6, mobile: false },
+  { label: "Testing & CI", color: "orange", shape: "tag", x: 4, y: 74, rotate: -5, mobile: true },
+  { label: "REST APIs", color: "pink", shape: "tag", x: 70, y: 12, rotate: 7, mobile: true },
+  { label: "Security", color: "green", shape: "circle", x: 76, y: 40, rotate: -9, mobile: false },
+  { label: "Full-Stack Enterprise Apps", color: "teal", shape: "tag", x: 62, y: 74, rotate: 4, mobile: false },
 ] as const;
 
 export const ABOUT: AboutContent = {

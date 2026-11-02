@@ -2,7 +2,15 @@ import Image from "next/image";
 import HeroHeadline from "@/components/ui/HeroHeadline";
 import Signature from "@/components/ui/Signature";
 import Sticker from "@/components/ui/Sticker";
-import { HERO, STICKERS } from "@/content/portfolio";
+import { HERO, STICKERS, type StickerColor } from "@/content/portfolio";
+
+const HIGHLIGHT_CLASSES: Record<StickerColor, string> = {
+  teal: "bg-sticker-teal text-ink",
+  pink: "bg-sticker-pink text-ink",
+  yellow: "bg-sticker-yellow text-ink",
+  orange: "bg-sticker-orange text-ink",
+  green: "bg-sticker-green text-ink",
+};
 
 export default function Hero() {
   return (
@@ -18,8 +26,19 @@ export default function Hero() {
           <p className="font-serif text-base leading-snug font-semibold text-cream md:col-span-6 md:text-lg lg:text-xl">
             {HERO.intro[0]}
           </p>
-          <p className="font-sans text-sm leading-relaxed text-cream/70 md:col-span-6 md:text-base lg:text-lg">
-            {HERO.intro[1]}
+          <p className="font-sans text-sm leading-relaxed text-cream/85 md:col-span-6 md:text-base lg:text-lg">
+            {HERO.intro[1].map((segment, index) =>
+              segment.highlight ? (
+                <span
+                  key={index}
+                  className={`rounded-xs box-decoration-clone px-1 py-0.5 font-medium ${HIGHLIGHT_CLASSES[segment.highlight]}`}
+                >
+                  {segment.text}
+                </span>
+              ) : (
+                <span key={index}>{segment.text}</span>
+              ),
+            )}
           </p>
         </div>
       </div>
@@ -44,7 +63,8 @@ export default function Hero() {
             width={1200}
             height={1500}
             preload
-            sizes="(max-width: 768px) 80vw, 45vw"
+            fetchPriority="high"
+            sizes="(max-width: 768px) 65vw, 30vw"
             style={{ width: "auto" }}
             className="pointer-events-none absolute bottom-0 left-1/2 h-[95%] max-w-full -translate-x-1/2 object-contain object-bottom select-none"
           />

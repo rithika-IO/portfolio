@@ -10,7 +10,7 @@ const STICKER_BG: Record<StickerColor, string> = {
   green: "bg-sticker-green",
 };
 
-export interface SectionProps {
+interface SectionProps {
   id: string;
   label: string;
   color: StickerColor;

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export interface RowProps {
+interface RowProps {
   main: ReactNode;
   aside?: ReactNode;
   className?: string;
