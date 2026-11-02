@@ -63,6 +63,16 @@ export interface StickerItem {
   mobile: boolean;
 }
 
+export interface AboutFact {
+  label: string;
+  value: string;
+}
+
+export interface AboutContent {
+  paragraphs: readonly [string, string];
+  facts: readonly AboutFact[];
+}
+
 export const HERO: HeroContent = {
   headline: "SOFTWARE ENGINEER",
   intro: [
@@ -81,6 +91,19 @@ export const STICKERS: readonly StickerItem[] = [
   { label: "Security", color: "green", shape: "circle", x: 74, y: 42, rotate: -9, mobile: false },
   { label: "Full-Stack", color: "teal", shape: "tag", x: 63, y: 72, rotate: 5, mobile: false },
 ] as const;
+
+export const ABOUT: AboutContent = {
+  paragraphs: [
+    "I'm a Software Engineering undergraduate who likes understanding how systems work underneath: queues, databases, APIs and the code that keeps them reliable.",
+    "I learn by building real projects, from a GitHub-integrated code analysis platform to a background job engine in .NET, and I care about testing, security and clean architecture as much as features.",
+  ],
+  facts: [
+    { label: "Based in", value: "Colombo, Sri Lanka" },
+    { label: "Studying", value: "BEng Software Engineering, Informatics Institute of Technology (University of Westminster)" },
+    { label: "Focus", value: "Backend and reliable systems" },
+    { label: "Status", value: "Open to internships and opportunities" },
+  ],
+} as const;
 
 export const NAV_LINKS: readonly NavLink[] = [
   { href: "#about", label: "About" },
