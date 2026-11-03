@@ -45,7 +45,7 @@ export function GET() {
   const body =
     [
       "# Rithika Mandiv",
-      "> Reliable by design. Software Engineering undergraduate at Informatics Institute of Technology (University of Westminster), based in Colombo, Sri Lanka, focused on backend systems, full-stack and enterprise applications, and machine learning.",
+      "> Reliable by design. Rithika Mandiv is a Software Engineering undergraduate at Informatics Institute of Technology (University of Westminster), based in Colombo, Sri Lanka. He focuses on backend development and reliable systems. His work covers full-stack web applications, enterprise applications, and machine learning.",
       ...ABOUT.paragraphs,
       projectsSection,
       skillsSection,
