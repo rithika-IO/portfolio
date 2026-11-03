@@ -120,7 +120,6 @@ rithika-portfolio/
 
 Rithika Mandiv
 Software Engineering Undergraduate
-GitHub: https://github.com/rithikamandiv-ux
 
 ---
 
