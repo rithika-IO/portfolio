@@ -13,20 +13,6 @@ export default function About() {
             ))}
           </div>
         }
-        aside={
-          <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {ABOUT.facts.map((fact) => (
-              <div key={fact.label}>
-                <dt className="font-display text-sm tracking-wider text-muted uppercase">
-                  {fact.label}
-                </dt>
-                <dd className="mt-1 text-sm leading-snug text-cream">
-                  {fact.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        }
       />
     </Section>
   );
