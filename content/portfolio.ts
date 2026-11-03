@@ -61,14 +61,8 @@ export interface StickerItem {
   mobile: boolean;
 }
 
-interface AboutFact {
-  label: string;
-  value: string;
-}
-
 interface AboutContent {
   paragraphs: readonly [string, string];
-  facts: readonly AboutFact[];
 }
 
 export const HERO: HeroContent = {
@@ -98,14 +92,8 @@ export const STICKERS: readonly StickerItem[] = [
 
 export const ABOUT: AboutContent = {
   paragraphs: [
-    "I'm a Software Engineering undergraduate who likes understanding how systems work underneath: queues, databases, APIs and the code that keeps them reliable.",
-    "I learn by building real projects, from a GitHub-integrated code analysis platform to a background job engine in .NET, and I care about testing, security and clean architecture as much as features.",
-  ],
-  facts: [
-    { label: "Based in", value: "Colombo, Sri Lanka" },
-    { label: "Studying", value: "BEng (Hons) Software Engineering, Informatics Institute of Technology (University of Westminster)" },
-    { label: "Focus", value: "Backend and reliable systems" },
-    { label: "Status", value: "Open to internships and opportunities" },
+    "My primary focus is backend development, building APIs and services with Node.js, Spring Boot and .NET. My work also covers full-stack web applications, enterprise applications and machine learning in Python.",
+    "I place a strong emphasis on software quality and testing, with over 150 automated tests written across my projects. I am a member of IEEE and the Rotaract Club of IIT.",
   ],
 } as const;
 
