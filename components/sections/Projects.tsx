@@ -1,5 +1,6 @@
 import Section from "@/components/ui/Section";
 import Row from "@/components/ui/Row";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 import { PROJECTS } from "@/content/portfolio";
 
 export default function Projects() {
@@ -37,7 +38,7 @@ export default function Projects() {
                     aria-label={`${project.title} on GitHub`}
                     className="shrink-0 rounded-xs text-sm text-cream underline decoration-coral/60 underline-offset-4 transition hover:text-coral hover:decoration-coral focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
                   >
-                    GitHub &#8599;
+                    GitHub <ArrowIcon />
                   </a>
                 )}
 
