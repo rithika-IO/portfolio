@@ -109,7 +109,7 @@ export const NAV_LINKS: readonly NavLink[] = [
 export const SOCIALS: readonly SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com/rithikamandiv-ux",
+    href: "https://github.com/rithika-IO",
     external: true,
   },
   {
@@ -147,7 +147,7 @@ export const PROJECTS: readonly Project[] = [
       "Deliberately separated deterministic finding detection from AI explanation, using an AI provider only to explain findings that already exist.",
     ],
     tags: ["React", "TypeScript", "Express", "PostgreSQL", "Redis", "BullMQ", "Semgrep"],
-    github: "https://github.com/rithikamandiv-ux/codeguardian-ai",
+    github: "https://github.com/rithika-IO/codeguardian-ai",
   },
   {
     title: "Cyber Log Analyzer",
@@ -160,7 +160,7 @@ export const PROJECTS: readonly Project[] = [
       "Exposed a RESTful API for log ingestion, querying, and alert management.",
     ],
     tags: ["React", "Node.js", "Express", "PostgreSQL", "JWT", "REST API"],
-    github: "https://github.com/rithikamandiv-ux/cyber-log-analyzer",
+    github: "https://github.com/rithika-IO/cyber-log-analyzer",
   },
   {
     title: "BudgetWise",
@@ -173,7 +173,7 @@ export const PROJECTS: readonly Project[] = [
       "Integrated a Python FastAPI microservice for budget forecasting and overspending prediction.",
     ],
     tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Python", "FastAPI"],
-    github: "https://github.com/rithikamandiv-ux/budgetwise",
+    github: "https://github.com/rithika-IO/budgetwise",
   },
   {
     title: "F1 Winner Prediction System",
@@ -186,7 +186,7 @@ export const PROJECTS: readonly Project[] = [
       "Built an end-to-end prediction pipeline covering data ingestion, preprocessing, and inference.",
     ],
     tags: ["Python", "FastF1", "Pandas", "Scikit-learn", "Machine Learning"],
-    github: "https://github.com/rithikamandiv-ux/F1-winner-prediction",
+    github: "https://github.com/rithika-IO/F1-winner-prediction",
   },
   {
     title: "CareNexus",
@@ -199,7 +199,7 @@ export const PROJECTS: readonly Project[] = [
       "Covered the backend with 83 automated tests using JUnit 5, Mockito, and MockMvc, run automatically via GitHub Actions CI.",
     ],
     tags: ["Java", "JavaFX", "Spring Boot", "PostgreSQL", "REST API"],
-    github: "https://github.com/rithikamandiv-ux/CareNexus",
+    github: "https://github.com/rithika-IO/CareNexus",
   },
   {
     title: "JobEngine",
@@ -212,7 +212,7 @@ export const PROJECTS: readonly Project[] = [
       "Covered the system with 73 automated tests, including integration tests run against real PostgreSQL via Testcontainers.",
     ],
     tags: ["C#", ".NET", "PostgreSQL", "React", "TypeScript"],
-    github: "https://github.com/rithikamandiv-ux/JobEngine",
+    github: "https://github.com/rithika-IO/JobEngine",
   },
   {
     title: "Aircraft Tracker",
@@ -225,7 +225,7 @@ export const PROJECTS: readonly Project[] = [
       "Tested without touching the network using an httpx mock transport and an application factory, with Ruff, ESLint, pytest, Vitest and SonarQube Cloud enforced in GitHub Actions CI.",
     ],
     tags: ["Python", "FastAPI", "React", "TypeScript", "WebSockets"],
-    github: "https://github.com/rithikamandiv-ux/aircraft-tracker",
+    github: "https://github.com/rithika-IO/aircraft-tracker",
   },
   {
     title: "stackrun",
@@ -238,7 +238,7 @@ export const PROJECTS: readonly Project[] = [
       "Shipped as a single binary with prebuilt macOS and Linux releases, tested with Go's race detector, and linted with golangci-lint in CI on Linux and macOS.",
     ],
     tags: ["Go", "CLI", "Concurrency", "Process Management", "GitHub Actions"],
-    github: "https://github.com/rithikamandiv-ux/stackrun",
+    github: "https://github.com/rithika-IO/stackrun",
   },
   {
     title: "Expense Recorder",
@@ -250,7 +250,7 @@ export const PROJECTS: readonly Project[] = [
       "Rendered views server-side using EJS templates for fast initial loads.",
     ],
     tags: ["Node.js", "Express", "SQLite", "EJS", "jQuery"],
-    github: "https://github.com/rithikamandiv-ux/expenseRecorder",
+    github: "https://github.com/rithika-IO/expenseRecorder",
   },
   {
     title: "Portfolio Website",
@@ -263,7 +263,7 @@ export const PROJECTS: readonly Project[] = [
       "Kept all content in one typed data file, separating what the site says from how it is laid out.",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    github: "https://github.com/rithikamandiv-ux/portfolio",
+    github: "https://github.com/rithika-IO/portfolio",
   },
 ] as const;
 
