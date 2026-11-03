@@ -1,5 +1,6 @@
 import Section from "@/components/ui/Section";
 import Row from "@/components/ui/Row";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 import { SOCIALS } from "@/content/portfolio";
 
 const CONTACT_SOCIALS = [
@@ -44,9 +45,10 @@ export default function Contact() {
                     {social.contactLabel ?? social.label}
                   </span>
                 </div>
-                <span aria-hidden="true" className="text-lg leading-none">
-                  {social.external ? "↗" : "→"}
-                </span>
+                <ArrowIcon
+                  direction={social.external ? "up-right" : "right"}
+                  className="shrink-0 text-lg"
+                />
               </a>
             ))}
           </div>

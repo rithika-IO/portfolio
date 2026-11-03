@@ -1,4 +1,5 @@
 import Signature from "@/components/ui/Signature";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export default function Footer() {
   return (
@@ -14,7 +15,7 @@ export default function Footer() {
             href="#home"
             className="rounded-xs text-sm text-cream underline decoration-coral/60 underline-offset-4 transition hover:text-coral hover:decoration-coral focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral"
           >
-            Back to top &uarr;
+            Back to top <ArrowIcon direction="up" />
           </a>
         </div>
       </div>

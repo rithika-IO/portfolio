@@ -14,7 +14,7 @@ const HIGHLIGHT_CLASSES: Record<StickerColor, string> = {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex min-h-svh flex-col bg-ink">
+    <section id="home" className="relative flex flex-col bg-ink md:min-h-svh">
       {/* ── Top (ink) ── */}
       <div className="mx-auto w-full max-w-7xl px-6 pt-18 pb-3 md:pt-20 md:pb-5">
         <div className="relative">
@@ -44,7 +44,7 @@ export default function Hero() {
       </div>
 
       {/* ── Bottom (cream grid-paper panel + portrait + stickers) ── */}
-      <div className="relative flex min-h-[220px] flex-1 pr-3 sm:pr-6 md:min-h-[240px] md:pr-10 lg:pr-14">
+      <div className="relative flex h-[326px] pr-3 sm:pr-6 md:h-auto md:min-h-[240px] md:flex-1 md:pr-10 lg:pr-14">
         <div
           className="relative min-h-full w-full flex-1 overflow-hidden rounded-r-[5rem] bg-cream md:rounded-r-full"
           style={{
@@ -66,7 +66,7 @@ export default function Hero() {
             fetchPriority="high"
             sizes="(max-width: 768px) 65vw, 30vw"
             style={{ width: "auto" }}
-            className="pointer-events-none absolute bottom-0 left-1/2 h-[95%] max-w-full -translate-x-1/2 object-contain object-bottom select-none"
+            className="pointer-events-none absolute bottom-0 left-1/2 h-[310px] max-w-full -translate-x-1/2 object-contain object-bottom select-none md:h-[95%]"
           />
         </div>
       </div>

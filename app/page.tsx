@@ -10,7 +10,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-transparent text-cream">
+    <main className="relative min-h-svh overflow-hidden bg-transparent text-cream">
       {/* ── Background ── */}
       <div className="grain fixed inset-0 -z-10 bg-charcoal" />
 
